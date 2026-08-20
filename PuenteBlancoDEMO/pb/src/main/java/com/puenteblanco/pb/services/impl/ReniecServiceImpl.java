@@ -12,7 +12,7 @@ import java.util.Map;
 @Service
 public class ReniecServiceImpl implements ReniecService {
 
-    private final String API_URL = "https://api.apis.net.pe/v2/reniec/dni?numero=";
+    private final String API_URL = "https://api.decolecta.com/v1/reniec/dni?numero=";
     private final String TOKEN = "sk_10088.sjfS4WvUq34Qv8Eb8Y6iTeFJkMLk0Qxl";
 
     @Override
