@@ -1059,7 +1059,7 @@ tipoDocSelect.addEventListener('change', () => {
       btnBuscarDocumento.disabled = true;
 
       try {
-        const res = await fetch(`http://localhost:8082/api/reniec/dni/${valor}`);
+        const res = await fetch(`http://144.91.90.133:8082/api/reniec/dni/${valor}`);
         if (!res.ok) throw new Error("No se encontraron resultados");
         
         const data = await res.json();
@@ -1320,7 +1320,7 @@ tipoDocSelect.addEventListener('change', () => {
       botonEnviar.textContent = "Enviando...";
 
       try {
-        const res = await fetch('http://localhost:8082/api/password/send-code', {
+        const res = await fetch('http://144.91.90.133:8082/api/password/send-code', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ correo })
@@ -1544,7 +1544,7 @@ tipoDocSelect.addEventListener('change', () => {
       if (!validarNuevaContrasena() || !validarConfirmacionContrasena()) return;
 
       try {
-        const res = await fetch(`http://localhost:8082/api/password/reset?correo=${encodeURIComponent(correo)}&codigo=${encodeURIComponent(codigo)}&nuevaContrasena=${encodeURIComponent(nuevaContrasena)}`, {
+        const res = await fetch(`http://144.91.90.133:8082/api/password/reset?correo=${encodeURIComponent(correo)}&codigo=${encodeURIComponent(codigo)}&nuevaContrasena=${encodeURIComponent(nuevaContrasena)}`, {
           method: 'POST'
         });
         const msg = await res.text();
