@@ -1064,9 +1064,9 @@ tipoDocSelect.addEventListener('change', () => {
         
         const data = await res.json();
 
-        document.getElementById('nombres').value = data.nombres || "";
-        document.getElementById('apellidoPaterno').value = data.apellidoPaterno || "";
-        document.getElementById('apellidoMaterno').value = data.apellidoMaterno || "";
+        document.getElementById('nombres').value = data.first_name || "";
+        document.getElementById('apellidoPaterno').value = data.first_last_name || "";
+        document.getElementById('apellidoMaterno').value = data.second_last_name || "";
         errorNumero.textContent = "";
       } catch (err) {
         console.error("Error al consultar RENIEC:", err);
