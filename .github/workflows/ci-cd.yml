@@ -78,11 +78,23 @@ jobs:
           java -version
           mvn -version
 
+      - name: Verificar archivos
+        run: |
+          echo "Directorio actual:"
+          pwd
+
+          echo "Archivos:"
+          ls -la
+      - name: Buscar Dockerfile
+        run: |
+          find ../.. -maxdepth 4 -iname "dockerfile" -o -iname "dockerfile.*"
+
       - name: Build and run tests
         run: mvn -B clean verify -e
       - name: Build Docker image
         run: |
            docker build -t puente-blanco-backend:latest .
+
 
       - name: Deploy application
         run: |
