@@ -88,22 +88,29 @@ jobs:
       - name: Buscar Dockerfile
         run: |
           find ../.. -maxdepth 4 -iname "dockerfile" -o -iname "dockerfile.*"
-
       - name: Build and run tests
         run: mvn -B clean verify -e
+
+      - name: Verify generated JAR
+        run: |
+          echo "JAR generado:"
+          ls -lh target/*.jar
+
       - name: Build Docker image
+        working-directory: ${{ github.workspace }}
         run: |
-           docker build -t puente-blanco-backend:latest .
+          echo "Directorio:"
+          pwd
 
+          echo "Dockerfile:"
+          ls -l Dockerfile
 
-      - name: Deploy application
+          echo "Construyendo imagen..."
+          docker build \
+          -f Dockerfile \
+          -t puente-blanco-backend:latest \
+          PuenteBlancoDEMO/pb
+
+      - name: Verify Docker image
         run: |
-           docker stop puente-blanco-backend || true
-           docker rm puente-blanco-backend || true
-
-           docker run -d \
-           --name puente-blanco-backend \
-           --restart unless-stopped \
-           -p 8080:8080 \
-           puente-blanco-backend:latest
-      
+          docker images | grep puente-blanco-backend
