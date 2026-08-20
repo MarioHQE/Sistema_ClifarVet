@@ -13,7 +13,7 @@ import java.util.Map;
 public class ReniecServiceImpl implements ReniecService {
 
     private final String API_URL = "https://api.apis.net.pe/v2/reniec/dni?numero=";
-    private final String TOKEN = "apis-token-16341.cXDDQG15OxxWuVSjIeGrdYShM5G64PsQ";
+    private final String TOKEN = "sk_10088.sjfS4WvUq34Qv8Eb8Y6iTeFJkMLk0Qxl";
 
     @Override
     @SuppressWarnings("unchecked") // Silenciamos el aviso del cast de Map
