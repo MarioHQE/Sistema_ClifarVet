@@ -80,3 +80,18 @@ jobs:
 
       - name: Build and run tests
         run: mvn -B clean verify -e
+      - name: Build Docker image
+        run: |
+           docker build -t puente-blanco-backend:latest .
+
+      - name: Deploy application
+        run: |
+           docker stop puente-blanco-backend || true
+           docker rm puente-blanco-backend || true
+
+           docker run -d \
+           --name puente-blanco-backend \
+           --restart unless-stopped \
+           -p 8080:8080 \
+           puente-blanco-backend:latest
+      
