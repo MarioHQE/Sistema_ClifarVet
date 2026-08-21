@@ -117,7 +117,7 @@ jobs:
 
       - name: Run Image 
         run: |
-          docker rm -f puente-blanc-backend
+          docker rm -f puente-blanco-backend
         
           docker run -d   --name puente-blanco-backend \
           --restart unless-stopped \
