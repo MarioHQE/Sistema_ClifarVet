@@ -110,7 +110,17 @@ jobs:
           -f Dockerfile \
           -t puente-blanco-backend:latest \
           PuenteBlancoDEMO/pb
-
+      
       - name: Verify Docker image
         run: |
-          docker images | grep puente-blanco-backend
+           docker images | grep puente-blanco-backend
+
+      - name: Run Image 
+        run: |
+          docker rm -f puente-blanc-backend
+        
+          docker run -d   --name puente-blanco-backend \
+          --restart unless-stopped \
+          -p 8082:8082   puente-blanco-backend:latest \
+
+      
